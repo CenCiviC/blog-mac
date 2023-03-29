@@ -1,0 +1,302 @@
+<body>
+    <div class="container">
+      <nav id="index"></nav>
+      
+      <div id="article-content">
+      </div>
+    </div>
+  
+    <style>
+      :root {
+        --red-color: #ec6a5e;
+        --yellow-color: #f5bf4f;
+        --green-color: #61c554;
+  
+        --menu-bar-color: #ffffff;
+        --black-color: #000000;
+        --white-color: #ffffff;
+        --paragraph-color: #7b7b7b;
+        --main-color: #00b4d8;
+        --sub-color: #90e0ef;
+        --highlight-color: #ff1800;
+        --warn-color: #ffb716;
+      }
+      
+      #index::-webkit-scrollbar {
+        width: 0.19rem;
+        height: 0.3rem;
+      }
+  
+      /* Track */
+      
+      
+      #index::-webkit-scrollbar-track {
+        background: radial-gradient(
+          var(--main-color),
+          var(--sub-color),
+          var(--white-color)
+        );
+      }
+  
+      * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+  
+      .container {
+        width: 90%;
+        max-width: 75rem;
+        margin: 0 auto;
+        padding: 0px;
+      }
+  
+      /* index decoration */
+      #index {
+        display: block;
+        text-decoration: none;
+        list-style: none;
+        width: 100%;
+  
+        max-height: 18rem;
+        overflow-y: scroll;
+        margin: 7rem auto 7rem auto;
+        padding-left: 0;
+        text-align: left;
+        scroll-behavior: smooth;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+  
+      .h2List,
+      #index::before {
+        display: flex;
+        height: 3em;
+        padding-left: 1em;
+        align-items: center;
+      }
+  
+      #index::before {
+        content: "index";
+        box-sizing: border-box;
+        margin: 0 auto;
+        background-color: var(--main-color);
+        color: var(--white-color);
+      }
+  
+      .h2List {
+        color: var(--paragraph-color);
+        text-decoration: none;
+        padding-left: 2em;
+        border-bottom: 0.06em solid var(--sub-color);
+        border-left: 0 solid var(--sub-color);
+        border-right: 0.06em solid var(--sub-color);
+  
+        transition: 0.3s linear;
+      }
+  
+      @media (hover: hover) {
+        .h2List:hover {
+          color: var(--white-color);
+          background: var(--sub-color);
+        }
+      }
+  
+      /* paragraph decoration */
+      h2 {
+        color: var(--black-color);
+      }
+      h3 {
+        color: var(--main-color);
+      }
+      p {
+        color: var(--paragraph-color);
+      }
+      .container h2::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 0.625em;
+        border-bottom: 0.13em solid;
+        border-image: linear-gradient(
+          to right,
+          var(--main-color),
+          var(--sub-color),
+          var(--paragraph-color)
+        );
+        border-image-slice: 1;
+      }
+  
+      .code {
+        text-align: left;
+        font-size: inherit;
+        font-size: 1.4rem;
+        font-family: "SF-Mono";
+      }
+      .code span {
+        top: 0px;
+      }
+      pre {
+        tab-size: 2;
+        padding: 0px;
+        border: none;
+        border-radius: 0px;
+      }
+      .terminal {
+        display: block;
+        position: relative;
+        margin: 3rem 0;
+        width: 100%;
+        height: auto;
+        max-height: 70rem; 
+        filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.15))
+          drop-shadow(0px 25px 30px rgba(0, 0, 0, 0.35));
+      }
+  
+      .terminal-body {
+        display: block;
+        background-color: white;
+        width: 100%;
+        height: auto;
+        border-radius: 0 0 10px 10px;
+      }
+  
+      .terminal-titlebar {
+        display: flex;
+  
+        align-items: center;
+        background-color: #393b45;
+        width: 100%;
+        height: 2.5em;
+        box-shadow: 0px 0.03em 0px rgba(0, 0, 0, 0.45),
+          inset 0px -0.03em 0px rgba(0, 0, 0, 0.45);
+        border-radius: 0.625rem 0.625em 0px 0px;
+      }
+      .control-button {
+        display: block;
+        position: absolute;
+        width: 0.75em;
+        height: 0.75em;
+  
+        border-radius: 50%;
+        border: 0.5px solid rgba(0, 0, 0, 0.12);
+  
+        margin: auto 0 auto 0.688em;
+      }
+      .red-btn {
+        background-color: var(--red-color);
+      }
+      .yellow-btn {
+        background-color: var(--yellow-color);
+        margin-left: 2.375em;
+      }
+  
+      .green-btn {
+        background-color: var(--green-color);
+        margin-left: 4em;
+      }
+  
+      .terminal-titlebar .location {
+        font-family: "SF Pro Text Bold";
+        font-size: 1.6rem;
+        color: var(--main-color);
+        font-weight: 700;
+        margin-right: 1.25em;
+      }
+  
+      .terminal-code {
+        font-family: "SF-Mono";
+        margin: 0;
+        padding-left: 0.5em;
+        font-size: 0.9rem;
+      }
+    </style>
+  
+    <script>
+        //article-content content input
+
+        //put code here
+        var input = ''
+        //input end
+
+        //h2 split
+        var output = "";
+        var h2Split = input.split("#");
+        for (var i in h2Split) {
+        if (i % 2) {
+            output += `<h2 class="cand" id="index-${i}">` + h2Split[i] + "</h2>";
+        } else output += h2Split[i];
+        }
+        input = output;
+
+        //code split
+        var output = "";
+        var codeSplit = input.split("```");
+        for (var i in codeSplit) {
+            if (i % 2) {
+                var codeBlock = codeSplit[i];
+                const location = codeBlock.substring(0, codeBlock.indexOf("<"));
+                var code = codeBlock.substring(
+                codeBlock.indexOf(">") + 1,
+                codeBlock.length - 6
+                );
+                code = code.replaceAll("<br />", "\n");
+
+                output += `<terminal-code location="${location}">${code}</terminal-code>`;
+            } else output += codeSplit[i];
+        }
+        input = output;
+
+        const article = document.querySelector("#article-content");
+        article.innerHTML = output;
+        //article-content content input end
+
+
+      // h2 list(index)
+      let index = document.getElementById("index");
+      const h2 = document.getElementsByClassName("cand");
+      for (n = 1; n <= h2.length; n++) {
+        let anchor = document.createElement("a");
+        anchor.setAttribute("href", "#index-" + n);
+        anchor.setAttribute("class", "h2List");
+        anchor.innerHTML = h2.item(n-1).innerHTML;
+        index.appendChild(anchor);
+      }
+
+      //h2 list(index) end
+  
+
+      //terminal
+      class terminalCode extends HTMLElement {
+        constructor(){
+          super();
+        }
+  
+      connectedCallback() {
+          const location = this.getAttribute("location")
+          const code = this.innerHTML
+          this.innerHTML = `
+          <div class="terminal">
+        <div class="terminal-titlebar">
+          <div class="control-button red-btn"></div>
+          <div class="control-button yellow-btn"></div>
+          <div class="control-button green-btn"></div>
+  
+          <div style="flex-grow: 1;"></div>
+          <div>
+            <span class="location">${location}</span>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <pre><code class="code language-c">${code}</code></pre>
+        </div>
+      </div>
+  `;
+  
+        }
+      }
+  
+      customElements.define("terminal-code", terminalCode);
+
+      //terminal end
+    </script>
+  </body>
