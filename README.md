@@ -1,10 +1,12 @@
 # blog-mac
 blogger mac ver
 
-##Usage
+***
+
+## Usage
 src/html/post.html에 주석 //put code here에 blogger html에 추가
 
-###blogger에서 작성법
+### blogger에서 작성법
 1. 제목 
 #제목#
 
@@ -15,7 +17,9 @@ code
 
 3. TBD
 
-##to be added 
+***
+
+## to be added 
 설정 창의 환경
 다크 모드로 설정 
 
